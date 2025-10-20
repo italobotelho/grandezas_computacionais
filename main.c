@@ -2,23 +2,22 @@
 //Código criado para fins de aprendizagem
 
 #include <stdio.h>
+#include <math.h>
+#include <windows.h>
 
 // Cabeçalho das funções
 void decimal_to_bin(int num);
-int decimal_to_hex(int num);
-int bin_to_decimal(int num);
-int bin_to_hex(int num);
-int hex_to_decimal(int num);
-int hex_to_bin(int num);
+void bin_to_decimal(long long num);
+void decimal_to_hex(int num);
+void hex_to_decimal(int num);
+void bin_to_hex(long long num);
+void hex_to_bin(int num);
 
-#include <stdio.h>
-
-// A função agora é 'void', pois ela mesma vai imprimir o resultado
-// em vez de retornar um número.
+// Função de Conversão de Decimal para Binário
 void decimal_to_bin(int num)
 {
     if (num == 0) {
-        printf("Binario: 0\n");
+        printf("Binario de 0 => 0\n");
         return;
     }
 
@@ -32,7 +31,7 @@ void decimal_to_bin(int num)
         cont++;
     }
 
-    printf("Binario de %d é: ", num);
+    printf("Binario de %d => ", num);
     for (int i = cont - 1; i >= 0; i--)
     {
         printf("%d", bits[i]);
@@ -40,9 +39,31 @@ void decimal_to_bin(int num)
     printf("\n");
 }
 
+// Função de Conversão de Binário para Decimal
+void bin_to_decimal(long long num)
+{
+    int bit;
+    long long quoc = num, decimal = 0;
+    int i = 0;
+    
+    while (quoc > 0)
+    {
+        bit = quoc % 10;
+        decimal += bit * (long long)pow(2, i);
+        quoc /= 10;
+        i++;
+    }
+
+    printf("Decimal de %lld => %d", num, decimal);
+    printf("\n");
+}
+
+// Função Principal
 int main()
 {
-    decimal_to_bin(0);
+    system("cls");
+    decimal_to_bin(442325);
+    bin_to_decimal(100100100000);
 
     return 0;
 }
