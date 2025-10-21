@@ -58,12 +58,50 @@ void bin_to_decimal(long long num)
     printf("\n");
 }
 
-// Função Principal
+void decimal_to_hex(int num)
+{
+    char hex[64];
+    int bit;
+    int cont = 0, quoc = num;
+
+    while (quoc > 0)
+    {
+        bit = quoc % 16;
+
+        switch(bit)
+        {
+            case 10: hex[cont] = 'A'; break;
+            case 11: hex[cont] = 'B'; break;
+            case 12: hex[cont] = 'C'; break;
+            case 13: hex[cont] = 'D'; break;
+            case 14: hex[cont] = 'E'; break;
+            case 15: hex[cont] = 'F'; break;
+            default: hex[cont] = bit + '0'; break;
+        }
+
+        quoc /= 16;
+        cont++;
+    }
+
+    printf("Hexadecimal de %d => ", num);
+    for (int i = cont - 1; i >= 0; i--)
+    {
+        printf("%c", hex[i]);
+    }
+    printf("\n");
+
+}
+
+// Função Principal - MAIN
 int main()
 {
+    int valor;
     system("cls");
-    decimal_to_bin(442325);
-    bin_to_decimal(100100100000);
+
+    printf("Qual o tipo de conversão você quer => ");
+    decimal_to_bin(valor);
+    bin_to_decimal(valor);
+    decimal_to_hex(valor);
 
     return 0;
 }
