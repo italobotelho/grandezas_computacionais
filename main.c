@@ -59,6 +59,7 @@ void bin_to_decimal(long long num)
     printf("\n");
 }
 
+// Função de Conversão de Decimal para Hexadecimal
 void decimal_to_hex(int num)
 {
     char hex[64];
@@ -100,7 +101,7 @@ void menu()
     printf("Qual grandeza voce quer converter?\n\n1. Decimal\t2. Binaria\t3. Hexadecimal\n\nDigite o numero que corresponde a opcao desejada\n\n=> ");
     scanf("%d", &opcao);
     system("cls");
-    
+
     printf("Insira o valor desejado para conversao\n\n=> ");
     switch(opcao)
     {
