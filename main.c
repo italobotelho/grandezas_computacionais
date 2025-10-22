@@ -6,6 +6,7 @@
 #include <windows.h>
 
 // Cabeçalho das funções
+void menu();
 void decimal_to_bin(int num);
 void bin_to_decimal(long long num);
 void decimal_to_hex(int num);
@@ -92,16 +93,49 @@ void decimal_to_hex(int num)
 
 }
 
+// Função que exibe o Menu Principal
+void menu()
+{
+    int opcao;
+    printf("Qual grandeza voce quer converter?\n\n1. Decimal\t2. Binaria\t3. Hexadecimal\n\nDigite o numero que corresponde a opcao desejada\n\n=> ");
+    scanf("%d", &opcao);
+    system("cls");
+    
+    printf("Insira o valor desejado para conversao\n\n=> ");
+    switch(opcao)
+    {
+        case 1:
+        {
+            int v_decimal;
+            scanf("%d", &v_decimal);
+            decimal_to_bin(v_decimal);
+            decimal_to_hex(v_decimal);
+            break;
+        }
+        case 2:
+        {
+            long long v_binario;
+            scanf("%lld", &v_binario);
+            bin_to_decimal(v_binario);
+            // bin_to_hex(v_binario);
+            break;
+        }
+        case 3:
+            printf("Opcao 3 ainda nao implementada.\n");
+            break;
+        default:
+            printf("Opcao invalida!\n");
+            break;
+    }
+}
+
 // Função Principal - MAIN
 int main()
 {
-    int valor;
+    int opcao;
     system("cls");
 
-    printf("Qual o tipo de conversão você quer => ");
-    decimal_to_bin(valor);
-    bin_to_decimal(valor);
-    decimal_to_hex(valor);
+    menu();
 
     return 0;
 }
